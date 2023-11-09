@@ -108,12 +108,12 @@
                     </td>
                     <td class="auto-style7">
                         <strong>
-                            <asp:Button ID="btnClear" runat="server" Height="52px" Width="77px" Text="C" CssClass="auto-style12" />
+                            <asp:Button ID="btnClear" runat="server" Height="52px" Width="77px" Text="C" CssClass="auto-style12" OnClick="btnClear_Click" />
                         </strong>
                     </td>
                     <td class="auto-style6">
                         <strong>
-                            <asp:Button ID="btnBorrarDigito" runat="server" Height="52px" Text="⌫" Width="77px" CssClass="auto-style12" />
+                            <asp:Button ID="btnBorrarDigito" runat="server" Height="52px" Text="⌫" Width="77px" CssClass="auto-style12" OnClick="btnBorrarDigito_Click" />
                         </strong>
                     </td>
                     <td class="auto-style9">
@@ -228,7 +228,7 @@
                     </td>
                     <td class="auto-style10">
                         <strong>
-                            <asp:Button ID="btnComa" runat="server" Height="52px" Text="," Width="77px" CssClass="auto-style12" />
+                            <asp:Button ID="btnComa" runat="server" Height="52px" Text="," Width="77px" CssClass="auto-style12" OnClick="btnComa_Click" />
                         </strong>
                     </td>
                     <td>

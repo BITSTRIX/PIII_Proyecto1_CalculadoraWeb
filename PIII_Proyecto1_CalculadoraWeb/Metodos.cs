@@ -13,14 +13,15 @@ namespace PIII_Proyecto1_CalculadoraWeb
         calculadora calculadora;
         public void validacionDatos()
         {
-          
+
         }
 
-        public void agregarDigitoAlTextBox(int digito){
+        public void agregarDigitoAlTextBox(int digito)
+        {
 
             if (calculadora.txtDatos.Text == null)
             {
-                calculadora.txtDatos.Text =Convert.ToString(digito);
+                calculadora.txtDatos.Text = Convert.ToString(digito);
             }
             else
             {
@@ -28,6 +29,20 @@ namespace PIII_Proyecto1_CalculadoraWeb
                 string valorActual = textBox;
                 calculadora.txtDatos.Text = valorActual + digito;
             }
+        }
+
+        public string EliminarUltimoDigito(string numero)
+        {
+            if (numero.Length >= 2)
+            {
+                // Eliminar el último carácter
+                numero = numero.Remove(numero.Length - 1);
+            }
+            else
+            {
+                numero = "";
+            }
+            return numero;
         }
 
     }

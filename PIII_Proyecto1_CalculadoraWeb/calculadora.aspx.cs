@@ -64,9 +64,9 @@ namespace PIII_Proyecto1_CalculadoraWeb
         public void agregarDigitoAlTextBox(int digito)
         {
 
-            if (txtDatos.Text == null)
+            if (string.IsNullOrEmpty(txtDatos.Text))
             {
-                txtDatos.Text = Convert.ToString(digito);
+                txtDatos.Text = digito.ToString();
             }
             else
             {
@@ -74,6 +74,31 @@ namespace PIII_Proyecto1_CalculadoraWeb
                 string valorActual = textBox;
                 txtDatos.Text = valorActual + digito;
             }
+        }
+
+        public void agregarComaAlTextBox(string num)
+        {
+            if (!num.Contains("."))
+            {
+                txtDatos.Text = num + ".";
+            }
+            txtDatos.Text = txtDatos.Text;
+        }
+
+        protected void btnComa_Click(object sender, EventArgs e)
+        {
+          agregarComaAlTextBox(txtDatos.Text);
+            
+        }
+
+        protected void btnClear_Click(object sender, EventArgs e)
+        {
+            txtDatos.Text = "";
+        }
+
+        protected void btnBorrarDigito_Click(object sender, EventArgs e)
+        {
+            txtDatos.Text = metodos.EliminarUltimoDigito(txtDatos.Text);
         }
     }
 
