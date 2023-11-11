@@ -8,6 +8,16 @@ using System.Xml.Linq;
 
 namespace PIII_Proyecto1_CalculadoraWeb
 {
+    public static class gVar
+    {
+        public static double numero1 = 0;
+        public static double numero2 = 0;
+        public static double resultado;
+        public static string operador;
+        public static bool nuevaOperacion = true;
+        public static double numero3 = 0;
+    }
+
     public partial class calculadora : System.Web.UI.Page
     {
         Metodos metodos = new Metodos();
@@ -36,7 +46,6 @@ namespace PIII_Proyecto1_CalculadoraWeb
         {
             agregarDigitoAlTextBox(4);
         }
-
         protected void btn5_Click(object sender, EventArgs e)
         {
             agregarDigitoAlTextBox(5);
@@ -63,7 +72,6 @@ namespace PIII_Proyecto1_CalculadoraWeb
 
         public void agregarDigitoAlTextBox(int digito)
         {
-
             if (string.IsNullOrEmpty(txtDatos.Text))
             {
                 txtDatos.Text = digito.ToString();
@@ -78,29 +86,232 @@ namespace PIII_Proyecto1_CalculadoraWeb
 
         public void agregarComaAlTextBox(string num)
         {
-            if (!num.Contains("."))
+            if (!num.Contains(","))
             {
-                txtDatos.Text = num + ".";
+                txtDatos.Text = num + ",";
             }
             txtDatos.Text = txtDatos.Text;
         }
 
+        public Boolean validarDatos()
+        {
+            if (txtDatos.Text == null && gVar.numero1 == 0)
+            {
+                return false;
+            }
+            return true;
+        }
+
         protected void btnComa_Click(object sender, EventArgs e)
         {
-          agregarComaAlTextBox(txtDatos.Text);
-            
+            agregarComaAlTextBox(txtDatos.Text);
         }
 
         protected void btnClear_Click(object sender, EventArgs e)
         {
             txtDatos.Text = "";
+            gVar.numero1 = 0;
+            gVar.numero2 = 0;
+            gVar.resultado = 0;
+            gVar.operador = "";
+            gVar.nuevaOperacion = true;
         }
 
         protected void btnBorrarDigito_Click(object sender, EventArgs e)
         {
             txtDatos.Text = metodos.EliminarUltimoDigito(txtDatos.Text);
         }
+
+        protected void btnxy_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btn10x_Click(object sender, EventArgs e)
+        {
+            gVar.numero1 = Convert.ToDouble(txtDatos.Text);
+            gVar.resultado = gVar.numero1;
+            txtDatos.Text = Math.Pow(10, gVar.numero1).ToString();
+        }
+
+        protected void btnLog_Click(object sender, EventArgs e)
+        {
+            gVar.numero1 = Convert.ToDouble(txtDatos.Text);
+            gVar.resultado = gVar.numero1;
+            txtDatos.Text = Math.Log10(gVar.numero1).ToString();
+        }
+
+        protected void btnx2_Click(object sender, EventArgs e)
+        {
+            gVar.numero1 = Convert.ToDouble(txtDatos.Text);
+            gVar.resultado = gVar.numero1;
+            txtDatos.Text = Math.Pow(gVar.numero1, 2).ToString();
+        }
+
+        protected void btnSuma_Click(object sender, EventArgs e)
+        {
+            if (validarDatos() == true && !string.IsNullOrEmpty(txtDatos.Text))
+            {
+                if (gVar.numero1 == 0)
+                {
+                    gVar.operador = "+";
+                    gVar.numero1 = Convert.ToDouble(txtDatos.Text);
+                    txtDatos.Text = "";
+                    lblnum1.Text = Convert.ToString(gVar.numero1);
+                }
+                else
+                {
+                    gVar.operador = "+";
+                    gVar.numero1 = Convert.ToDouble(txtDatos.Text);
+                    txtDatos.Text = "";
+                    gVar.nuevaOperacion = true;
+                    lblnum1.Text = Convert.ToString(gVar.numero1);
+                    lblnum2.Text = Convert.ToString(gVar.numero2);
+                }
+            }
+   
+        }
+
+        protected void btnIgual_Click(object sender, EventArgs e)
+        {
+
+            if (!string.IsNullOrEmpty(gVar.operador) && txtDatos.Text != null)
+            {
+                gVar.numero2 = double.Parse(txtDatos.Text);
+                
+                if (gVar.nuevaOperacion == true)
+                {
+                    switch (gVar.operador)
+                    {
+                        case "+":
+                            gVar.resultado = (gVar.numero1 + gVar.numero2);
+                            gVar.numero3 = gVar.numero1;
+                            break;
+                        case "-":
+                            gVar.resultado = (gVar.numero1 - gVar.numero2);
+                            break;
+                        case "*":
+                            gVar.resultado = (gVar.numero1 * gVar.numero2);
+                            break;
+                        case "/":
+                            gVar.resultado = (gVar.numero1 / gVar.numero2);
+                            break;
+                        default:
+                            break;
+                    }
+                    gVar.nuevaOperacion = false;
+                }
+                else
+                {
+                    switch (gVar.operador)
+                    {
+                        case "+":
+                            gVar.resultado = (gVar.numero2 + gVar.numero3);
+                            break;
+                        case "-":
+                            gVar.resultado = (gVar.numero2 - gVar.numero3);
+                            break;
+                        case "*":
+                            gVar.resultado = (gVar.numero2 * gVar.numero3);
+                            break;
+                        case "/":
+                            gVar.resultado = ( gVar.numero2 / gVar.numero3);
+                            break;
+                        default:
+                            break;
+                    }
+                }                  
+                txtDatos.Text = Convert.ToString(gVar.resultado);
+            }
+     
+        }
+
+        protected void btnRaiz_Click(object sender, EventArgs e)
+        {
+            gVar.numero1 = Convert.ToDouble(txtDatos.Text);
+            gVar.resultado = gVar.numero1;
+            txtDatos.Text = Math.Sqrt(gVar.numero1).ToString();
+        }
+
+        protected void btnResta_Click(object sender, EventArgs e)
+        {
+            if (validarDatos() == true && !string.IsNullOrEmpty(txtDatos.Text))
+            {
+                if (gVar.numero1 == 0)
+                {
+                    gVar.operador = "-";
+                    gVar.numero1 = Convert.ToDouble(txtDatos.Text);
+                    txtDatos.Text = "";
+                    lblnum1.Text = Convert.ToString(gVar.numero1);
+                }
+                else
+                {
+                    gVar.operador = "-";
+                    gVar.numero1 = Convert.ToDouble(txtDatos.Text);
+                    txtDatos.Text = "";
+                    gVar.nuevaOperacion = true;
+                    lblnum1.Text = Convert.ToString(gVar.numero1);
+                    lblnum2.Text = Convert.ToString(gVar.numero2);
+                }
+            }
+
+        }
+
+        protected void btnMultiplicacion_Click(object sender, EventArgs e)
+        {
+            if (validarDatos() == true && !string.IsNullOrEmpty(txtDatos.Text))
+            {
+                if (gVar.numero1 == 0)
+                {
+                    gVar.operador = "*";
+                    gVar.numero1 = Convert.ToDouble(txtDatos.Text);
+                    txtDatos.Text = "";
+                    lblnum1.Text = Convert.ToString(gVar.numero1);
+                }
+                else
+                {
+                    gVar.operador = "*";
+                    gVar.numero1 = Convert.ToDouble(txtDatos.Text);
+                    txtDatos.Text = "";
+                    gVar.nuevaOperacion = true;
+                    lblnum1.Text = Convert.ToString(gVar.numero1);
+                    lblnum2.Text = Convert.ToString(gVar.numero2);
+                }
+            }
+        }
+
+        protected void btnDivision_Click(object sender, EventArgs e)
+        {
+            if (validarDatos() == true && !string.IsNullOrEmpty(txtDatos.Text))
+            {
+                if (gVar.numero1 == 0)
+                {
+                    gVar.operador = "/";
+                    gVar.numero1 = Convert.ToDouble(txtDatos.Text);
+                    txtDatos.Text = "";
+                    lblnum1.Text = Convert.ToString(gVar.numero1);
+                }
+                else
+                {
+                    gVar.operador = "/";
+                    gVar.numero1 = Convert.ToDouble(txtDatos.Text);
+                    txtDatos.Text = "";
+                    gVar.nuevaOperacion = true;
+                    lblnum1.Text = Convert.ToString(gVar.numero1);
+                    lblnum2.Text = Convert.ToString(gVar.numero2);
+                }
+            }
+        }
+
+        protected void btnMasMenos_Click(object sender, EventArgs e)
+        {
+            gVar.numero1 = Convert.ToDouble(txtDatos.Text);
+            gVar.numero1 *= -1;
+            txtDatos.Text = gVar.numero1.ToString();
+        }
     }
+
+
 
 
 }

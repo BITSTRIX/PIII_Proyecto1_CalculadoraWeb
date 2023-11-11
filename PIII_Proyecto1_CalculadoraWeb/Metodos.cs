@@ -11,14 +11,16 @@ namespace PIII_Proyecto1_CalculadoraWeb
     public class Metodos
     {
         calculadora calculadora;
-        public void validacionDatos()
+       /* public Boolean validarDatos()
         {
-
+            if (calculadora.txtDatos.Text == null) { 
+                return false;
+            }
+            return true;
         }
 
         public void agregarDigitoAlTextBox(int digito)
         {
-
             if (calculadora.txtDatos.Text == null)
             {
                 calculadora.txtDatos.Text = Convert.ToString(digito);
@@ -29,13 +31,12 @@ namespace PIII_Proyecto1_CalculadoraWeb
                 string valorActual = textBox;
                 calculadora.txtDatos.Text = valorActual + digito;
             }
-        }
+        }*/
 
         public string EliminarUltimoDigito(string numero)
         {
             if (numero.Length >= 2)
             {
-                // Eliminar el último carácter
                 numero = numero.Remove(numero.Length - 1);
             }
             else

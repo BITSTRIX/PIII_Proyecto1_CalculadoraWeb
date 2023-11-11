@@ -93,17 +93,19 @@
                     </td>
                 </tr>
             </table>
+            <asp:Label ID="lblnum1" runat="server" Text="Label"></asp:Label>
             <br />
+            <asp:Label ID="lblnum2" runat="server" Text="Label"></asp:Label>
             <br />
             <strong>
-                <asp:TextBox ID="txtDatos" runat="server" Height="40px" Width="406px" BorderStyle="Groove" ReadOnly="True" TextMode="Number" CssClass="alinear-derecha"></asp:TextBox>
+                <asp:TextBox ID="txtDatos" runat="server" Height="40px" Width="406px" BorderStyle="Groove" ReadOnly="True" CssClass="alinear-derecha"></asp:TextBox>
             </strong>
             <br />
             <table class="auto-style3" align="center">
                 <tr>
                     <td class="auto-style9">
                         <strong>
-                            <asp:Button ID="btnRaiz" runat="server" Height="52px" Text="√" Width="77px" CssClass="auto-style12" />
+                            <asp:Button ID="btnRaiz" runat="server" Height="52px" Text="²√ ͯ" Width="77px" CssClass="auto-style12" OnClick="btnRaiz_Click" />
                         </strong>
                     </td>
                     <td class="auto-style7">
@@ -125,14 +127,14 @@
                     </td>
                     <td class="auto-style6">
                         <strong>
-                            <asp:Button ID="btnDivision" runat="server" Height="52px" Text="÷" Width="77px" CssClass="auto-style13" />
+                            <asp:Button ID="btnDivision" runat="server" Height="52px" Text="÷" Width="77px" CssClass="auto-style13" OnClick="btnDivision_Click" />
                         </strong>
                     </td>
                 </tr>
                 <tr>
                     <td class="auto-style10">
                         <strong>
-                            <asp:Button ID="btnxy" runat="server" Height="52px" Text="x^y" Width="77px" CssClass="auto-style12" />
+                            <asp:Button ID="btnxy" runat="server" Height="52px" Text="xʸ" Width="77px" CssClass="auto-style12" OnClick="btnxy_Click" />
                         </strong>
                     </td>
                     <td class="auto-style8">
@@ -152,14 +154,14 @@
                     </td>
                     <td style="font-size: xx-large">
                         <strong>
-                            <asp:Button ID="btnMultiplicacion" runat="server" Height="52px" Text="×" Width="77px" CssClass="auto-style13" />
+                            <asp:Button ID="btnMultiplicacion" runat="server" Height="52px" Text="×" Width="77px" CssClass="auto-style13" OnClick="btnMultiplicacion_Click" />
                         </strong>
                     </td>
                 </tr>
                 <tr>
                     <td class="auto-style10">
                         <strong>
-                            <asp:Button ID="btn10x" runat="server" Height="52px" Text="10^x" Width="77px" CssClass="auto-style12" />
+                            <asp:Button ID="btn10x" runat="server" Height="52px" Text="10ˣ" Width="77px" CssClass="auto-style12" OnClick="btn10x_Click" />
                         </strong>
                     </td>
                     <td class="auto-style8">
@@ -179,14 +181,14 @@
                     </td>
                     <td>
                         <strong>
-                            <asp:Button ID="btnResta" runat="server" Height="52px" Text="−" Width="77px" CssClass="auto-style13" />
+                            <asp:Button ID="btnResta" runat="server" Height="52px" Text="−" Width="77px" CssClass="auto-style13" OnClick="btnResta_Click" />
                         </strong>
                     </td>
                 </tr>
                 <tr>
                     <td class="auto-style10">
                         <strong>
-                            <asp:Button ID="btnLog" runat="server" Height="52px" Text="log" Width="77px" CssClass="auto-style12" />
+                            <asp:Button ID="btnLog" runat="server" Height="52px" Text="log" Width="77px" CssClass="auto-style12" OnClick="btnLog_Click" />
                         </strong>
                     </td>
                     <td class="auto-style8">
@@ -206,19 +208,19 @@
                     </td>
                     <td>
                         <strong>
-                            <asp:Button ID="btnSuma" runat="server" Height="52px" Text="+" Width="77px" CssClass="auto-style13" />
+                            <asp:Button ID="btnSuma" runat="server" Height="52px" Text="+" Width="77px" CssClass="auto-style13" OnClick="btnSuma_Click" />
                         </strong>
                     </td>
                 </tr>
                 <tr>
                     <td class="auto-style10">
                         <strong>
-                            <asp:Button ID="btnx2" runat="server" Height="52px" Text="x^2" Width="77px" CssClass="auto-style12" />
+                            <asp:Button ID="btnx2" runat="server" Height="52px" Text="x²" Width="77px" CssClass="auto-style12" OnClick="btnx2_Click" />
                         </strong>
                     </td>
                     <td class="auto-style8">
                         <strong>
-                            <asp:Button ID="btnMasMenos" runat="server" Height="52px" Text="∓" Width="77px" CssClass="auto-style12" />
+                            <asp:Button ID="btnMasMenos" runat="server" Height="52px" Text="∓" Width="77px" CssClass="auto-style12" OnClick="btnMasMenos_Click" />
                         </strong>
                     </td>
                     <td>
@@ -233,7 +235,7 @@
                     </td>
                     <td>
                         <strong>
-                            <asp:Button ID="btnIgual" runat="server" Height="52px" Text="=" Width="77px" CssClass="auto-style14" />
+                            <asp:Button ID="btnIgual" runat="server" Height="52px" Text="=" Width="77px" CssClass="auto-style14" OnClick="btnIgual_Click" />
                         </strong>
                     </td>
                 </tr>

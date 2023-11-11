@@ -74,7 +74,6 @@
   <ItemGroup>
     <Compile Include="calculadora.aspx.cs">
       <DependentUpon>calculadora.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="calculadora.aspx.designer.cs">
       <DependentUpon>calculadora.aspx</DependentUpon>
