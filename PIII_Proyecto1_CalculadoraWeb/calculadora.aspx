@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="stylesheet" type="text/css" href="Style.css"/>
     <title></title>
 
     <style type="text/css">
@@ -14,23 +14,13 @@
             font-size: xx-large;
             text-align: center;
             color: #666666;
-            background-color: #66CCFF;
+            background-color: #1D1B1C;
         }
 
         .auto-style2 {
             width: 100%;
             height: 80px;
-            background-color: #66CCFF;
-        }
-
-        .auto-style3 {
-            width: 26%;
-            height: 263px;
-            text-align: center;
-        }
-
-        .auto-style6 {
-            height: 54px;
+            background-color: #1D1B1C;
         }
 
         .auto-style7 {
@@ -71,37 +61,69 @@
 
         .auto-style15 {
             text-align: center;
-            height: 1232px;
-            background-color: #CCFFFF;
+            height: 100%;
+            background-color: #53A69C;
+            margin-left: 0px;
         }
         .auto-style16 {
             text-align: center;
-            background-color: #66CCFF;
+            background-color: #1D1B1C;
+            bottom: 0;
+            position: fixed;
+            width: 100%;
         }
         .auto-style17 {
-            color: #333333;
+            color: #B2A991;
+        }
+        .auto-style18 {
+            width: 57px;
+            height: 54px;
+        }
+        .auto-style19 {
+            width: 57px;
+        }
+        .auto-style20 {
+            height: 54px;
+        }
+        .auto-style21 {
+            font-size: medium;
+            color: #B2A991;
+        }
+        .auto-style22 {
+            font-size: large;
+            color: #B2A991;
+        }
+        .auto-style24 {
+            text-align: right;
+            font-size: x-large;
         }
         </style>
 </head>
-<body style="height: 979px">
+<body>
     <form id="form1" runat="server">
         <div class="auto-style15">
             <table class="auto-style2">
                 <tr>
                     <td class="auto-style1">
+                        <h1 class="auto-style17">&nbsp;</h1>
                         <h1 class="auto-style17"><strong>Calculadora Web</strong></h1>
+                        <p class="auto-style22"><strong><em>Proyecto de Programación III</em></strong></p>
+                        <p class="auto-style22">&nbsp;</p>
                     </td>
                 </tr>
             </table>
-            <asp:Label ID="lblnum1" runat="server" Text="Label"></asp:Label>
+            <div = PantallaCalculadora">
             <br />
-            <asp:Label ID="lblnum2" runat="server" Text="Label"></asp:Label>
+            <br />
             <br />
             <strong>
-                <asp:TextBox ID="txtDatos" runat="server" Height="40px" Width="406px" BorderStyle="Groove" ReadOnly="True" CssClass="alinear-derecha"></asp:TextBox>
+                <asp:TextBox ID="txtDatos" runat="server" Height="60px" Width="398px" BorderStyle="Groove" ReadOnly="True" OnTextChanged="txtDatos_TextChanged" CssClass="auto-style24"></asp:TextBox>
+                <br />
             </strong>
             <br />
-            <table class="auto-style3" align="center">
+                </div = PantallaCalculadora">
+                <div = TablaCalculadora align="center">
+            <table align="center">
                 <tr>
                     <td class="auto-style9">
                         <strong>
@@ -113,7 +135,7 @@
                             <asp:Button ID="btnClear" runat="server" Height="52px" Width="77px" Text="C" CssClass="auto-style12" OnClick="btnClear_Click" />
                         </strong>
                     </td>
-                    <td class="auto-style6">
+                    <td class="auto-style20">
                         <strong>
                             <asp:Button ID="btnBorrarDigito" runat="server" Height="52px" Text="⌫" Width="77px" CssClass="auto-style12" OnClick="btnBorrarDigito_Click" />
                         </strong>
@@ -121,11 +143,11 @@
                     <td class="auto-style9">
                         <em>
                             <strong>
-                                <asp:Button ID="btnN" runat="server" Height="52px" Text="n!" Width="77px" CssClass="auto-style11" />
+                                <asp:Button ID="btnN" runat="server" Height="52px" Text="n!" Width="77px" CssClass="auto-style11" OnClick="btnN_Click" />
                             </strong>
                         </em>
                     </td>
-                    <td class="auto-style6">
+                    <td class="auto-style18">
                         <strong>
                             <asp:Button ID="btnDivision" runat="server" Height="52px" Text="÷" Width="77px" CssClass="auto-style13" OnClick="btnDivision_Click" />
                         </strong>
@@ -152,7 +174,7 @@
                             <asp:Button ID="btn9" runat="server" Height="52px" Text="9" Width="77px" CssClass="auto-style12" OnClick="btn9_Click" />
                         </strong>
                     </td>
-                    <td style="font-size: xx-large">
+                    <td style="font-size: xx-large" class="auto-style19">
                         <strong>
                             <asp:Button ID="btnMultiplicacion" runat="server" Height="52px" Text="×" Width="77px" CssClass="auto-style13" OnClick="btnMultiplicacion_Click" />
                         </strong>
@@ -179,7 +201,7 @@
                             <asp:Button ID="btn6" runat="server" Height="52px" Text="6" Width="77px" CssClass="auto-style12" OnClick="btn6_Click" />
                         </strong>
                     </td>
-                    <td>
+                    <td class="auto-style19">
                         <strong>
                             <asp:Button ID="btnResta" runat="server" Height="52px" Text="−" Width="77px" CssClass="auto-style13" OnClick="btnResta_Click" />
                         </strong>
@@ -206,7 +228,7 @@
                             <asp:Button ID="btn3" runat="server" Height="52px" Text="3" Width="77px" CssClass="auto-style12" OnClick="btn3_Click" />
                         </strong>
                     </td>
-                    <td>
+                    <td class="auto-style19">
                         <strong>
                             <asp:Button ID="btnSuma" runat="server" Height="52px" Text="+" Width="77px" CssClass="auto-style13" OnClick="btnSuma_Click" />
                         </strong>
@@ -233,28 +255,31 @@
                             <asp:Button ID="btnComa" runat="server" Height="52px" Text="," Width="77px" CssClass="auto-style12" OnClick="btnComa_Click" />
                         </strong>
                     </td>
-                    <td>
+                    <td class="auto-style19">
                         <strong>
                             <asp:Button ID="btnIgual" runat="server" Height="52px" Text="=" Width="77px" CssClass="auto-style14" OnClick="btnIgual_Click" />
                         </strong>
                     </td>
                 </tr>
             </table>
+                </div>
             <br />
 
+
+            <br />
 
         </div>
     </form>
     <footer class="auto-style16">
         <br />
         <strong>
-            <asp:Label ID="Label1" runat="server" Text="Proyecto elaborado por: " CssClass="auto-style12"></asp:Label>
+            <asp:Label ID="Label1" runat="server" Text="Proyecto elaborado por: " CssClass="auto-style21"></asp:Label>
         </strong>
+        <br class="auto-style17" />
+        <br class="auto-style17" />
+        <span class="auto-style17">Jose Antonio Valerio Chaves.</span><br class="auto-style17" />
+        <span class="auto-style17">Name #2</span><br />
         <br />
-        <br />
-        Jose Antonio Valerio Chaves.<br />
-        Name #2<br />
-        Name #3<br />
     </footer>
 </body>
 </html>

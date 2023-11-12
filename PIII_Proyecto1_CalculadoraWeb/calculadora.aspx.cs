@@ -104,7 +104,10 @@ namespace PIII_Proyecto1_CalculadoraWeb
 
         protected void btnComa_Click(object sender, EventArgs e)
         {
-            agregarComaAlTextBox(txtDatos.Text);
+            if (validarDatos() == true && !string.IsNullOrEmpty(txtDatos.Text))
+            {
+                agregarComaAlTextBox(txtDatos.Text);
+            }
         }
 
         protected void btnClear_Click(object sender, EventArgs e)
@@ -124,28 +127,43 @@ namespace PIII_Proyecto1_CalculadoraWeb
 
         protected void btnxy_Click(object sender, EventArgs e)
         {
-
+            if (validarDatos() == true && !string.IsNullOrEmpty(txtDatos.Text))
+            {
+                gVar.numero1 = Convert.ToDouble(txtDatos.Text);
+                txtDatos.Text = "";
+                gVar.operador = "X^y";   
+                gVar.nuevaOperacion= true;
+            }
         }
 
         protected void btn10x_Click(object sender, EventArgs e)
         {
-            gVar.numero1 = Convert.ToDouble(txtDatos.Text);
-            gVar.resultado = gVar.numero1;
-            txtDatos.Text = Math.Pow(10, gVar.numero1).ToString();
+            if (validarDatos() == true && !string.IsNullOrEmpty(txtDatos.Text))
+            {
+                gVar.numero1 = Convert.ToDouble(txtDatos.Text);
+                gVar.resultado = gVar.numero1;
+                txtDatos.Text = Math.Pow(10, gVar.numero1).ToString();
+            }
         }
 
         protected void btnLog_Click(object sender, EventArgs e)
         {
-            gVar.numero1 = Convert.ToDouble(txtDatos.Text);
-            gVar.resultado = gVar.numero1;
-            txtDatos.Text = Math.Log10(gVar.numero1).ToString();
+            if (validarDatos() == true && !string.IsNullOrEmpty(txtDatos.Text))
+            {
+                gVar.numero1 = Convert.ToDouble(txtDatos.Text);
+                gVar.resultado = gVar.numero1;
+                txtDatos.Text = Math.Log10(gVar.numero1).ToString();
+            }
         }
 
         protected void btnx2_Click(object sender, EventArgs e)
         {
-            gVar.numero1 = Convert.ToDouble(txtDatos.Text);
-            gVar.resultado = gVar.numero1;
-            txtDatos.Text = Math.Pow(gVar.numero1, 2).ToString();
+            if (validarDatos() == true && !string.IsNullOrEmpty(txtDatos.Text))
+            {
+                gVar.numero1 = Convert.ToDouble(txtDatos.Text);
+                gVar.resultado = gVar.numero1;
+                txtDatos.Text = Math.Pow(gVar.numero1, 2).ToString();
+            }
         }
 
         protected void btnSuma_Click(object sender, EventArgs e)
@@ -157,7 +175,6 @@ namespace PIII_Proyecto1_CalculadoraWeb
                     gVar.operador = "+";
                     gVar.numero1 = Convert.ToDouble(txtDatos.Text);
                     txtDatos.Text = "";
-                    lblnum1.Text = Convert.ToString(gVar.numero1);
                 }
                 else
                 {
@@ -165,11 +182,9 @@ namespace PIII_Proyecto1_CalculadoraWeb
                     gVar.numero1 = Convert.ToDouble(txtDatos.Text);
                     txtDatos.Text = "";
                     gVar.nuevaOperacion = true;
-                    lblnum1.Text = Convert.ToString(gVar.numero1);
-                    lblnum2.Text = Convert.ToString(gVar.numero2);
                 }
             }
-   
+
         }
 
         protected void btnIgual_Click(object sender, EventArgs e)
@@ -178,7 +193,7 @@ namespace PIII_Proyecto1_CalculadoraWeb
             if (!string.IsNullOrEmpty(gVar.operador) && txtDatos.Text != null)
             {
                 gVar.numero2 = double.Parse(txtDatos.Text);
-                
+
                 if (gVar.nuevaOperacion == true)
                 {
                     switch (gVar.operador)
@@ -195,6 +210,9 @@ namespace PIII_Proyecto1_CalculadoraWeb
                             break;
                         case "/":
                             gVar.resultado = (gVar.numero1 / gVar.numero2);
+                            break;
+                        case "X^y":
+                            gVar.resultado = (Math.Pow( gVar.numero1, gVar.numero2));
                             break;
                         default:
                             break;
@@ -215,22 +233,28 @@ namespace PIII_Proyecto1_CalculadoraWeb
                             gVar.resultado = (gVar.numero2 * gVar.numero3);
                             break;
                         case "/":
-                            gVar.resultado = ( gVar.numero2 / gVar.numero3);
+                            gVar.resultado = (gVar.numero2 / gVar.numero3);
+                            break;
+                        case "X^y":
+                            gVar.resultado = (Math.Pow(gVar.numero1, gVar.numero2));
                             break;
                         default:
                             break;
                     }
-                }                  
+                }
                 txtDatos.Text = Convert.ToString(gVar.resultado);
             }
-     
+
         }
 
         protected void btnRaiz_Click(object sender, EventArgs e)
         {
-            gVar.numero1 = Convert.ToDouble(txtDatos.Text);
-            gVar.resultado = gVar.numero1;
-            txtDatos.Text = Math.Sqrt(gVar.numero1).ToString();
+            if (validarDatos() == true && !string.IsNullOrEmpty(txtDatos.Text))
+            {
+                gVar.numero1 = Convert.ToDouble(txtDatos.Text);
+                gVar.resultado = gVar.numero1;
+                txtDatos.Text = Math.Sqrt(gVar.numero1).ToString();
+            }
         }
 
         protected void btnResta_Click(object sender, EventArgs e)
@@ -242,7 +266,6 @@ namespace PIII_Proyecto1_CalculadoraWeb
                     gVar.operador = "-";
                     gVar.numero1 = Convert.ToDouble(txtDatos.Text);
                     txtDatos.Text = "";
-                    lblnum1.Text = Convert.ToString(gVar.numero1);
                 }
                 else
                 {
@@ -250,8 +273,6 @@ namespace PIII_Proyecto1_CalculadoraWeb
                     gVar.numero1 = Convert.ToDouble(txtDatos.Text);
                     txtDatos.Text = "";
                     gVar.nuevaOperacion = true;
-                    lblnum1.Text = Convert.ToString(gVar.numero1);
-                    lblnum2.Text = Convert.ToString(gVar.numero2);
                 }
             }
 
@@ -266,7 +287,6 @@ namespace PIII_Proyecto1_CalculadoraWeb
                     gVar.operador = "*";
                     gVar.numero1 = Convert.ToDouble(txtDatos.Text);
                     txtDatos.Text = "";
-                    lblnum1.Text = Convert.ToString(gVar.numero1);
                 }
                 else
                 {
@@ -274,8 +294,6 @@ namespace PIII_Proyecto1_CalculadoraWeb
                     gVar.numero1 = Convert.ToDouble(txtDatos.Text);
                     txtDatos.Text = "";
                     gVar.nuevaOperacion = true;
-                    lblnum1.Text = Convert.ToString(gVar.numero1);
-                    lblnum2.Text = Convert.ToString(gVar.numero2);
                 }
             }
         }
@@ -289,7 +307,6 @@ namespace PIII_Proyecto1_CalculadoraWeb
                     gVar.operador = "/";
                     gVar.numero1 = Convert.ToDouble(txtDatos.Text);
                     txtDatos.Text = "";
-                    lblnum1.Text = Convert.ToString(gVar.numero1);
                 }
                 else
                 {
@@ -297,21 +314,38 @@ namespace PIII_Proyecto1_CalculadoraWeb
                     gVar.numero1 = Convert.ToDouble(txtDatos.Text);
                     txtDatos.Text = "";
                     gVar.nuevaOperacion = true;
-                    lblnum1.Text = Convert.ToString(gVar.numero1);
-                    lblnum2.Text = Convert.ToString(gVar.numero2);
                 }
             }
         }
 
         protected void btnMasMenos_Click(object sender, EventArgs e)
         {
-            gVar.numero1 = Convert.ToDouble(txtDatos.Text);
-            gVar.numero1 *= -1;
-            txtDatos.Text = gVar.numero1.ToString();
+            if (validarDatos() == true && !string.IsNullOrEmpty(txtDatos.Text))
+            {
+                gVar.numero1 = Convert.ToDouble(txtDatos.Text);
+                gVar.numero1 *= -1;
+                txtDatos.Text = gVar.numero1.ToString();
+            }
+        }
+
+        protected void btnN_Click(object sender, EventArgs e)
+        {
+            if (validarDatos() == true && !string.IsNullOrEmpty(txtDatos.Text))
+            {
+                double h = Convert.ToDouble(txtDatos.Text);
+                double fact = 1;
+                for (; h > 0.0; h--)
+                {
+                    fact = fact * h;
+                }
+                txtDatos.Text = fact.ToString();
+
+            }
+        }
+
+        protected void txtDatos_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
-
-
-
-
 }

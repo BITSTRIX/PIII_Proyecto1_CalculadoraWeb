@@ -1,5 +1,13 @@
-﻿body {
+﻿* {
+    margin: 0;
+    padding: 0;
+}
 
+body {
+    height: 100%;
+    width: 100%;
+    background-color: #53A69C;
+    justify-content: center;
 }
 
 .alinear-derecha {
@@ -9,4 +17,13 @@
 
 .Button {
     border-radius: 10px;
+}
+
+.Calculadora {
+    text-align: center;
+}
+
+.TablaCalculadora {
+    text-align: center;
+    justify-content: center;
 }
